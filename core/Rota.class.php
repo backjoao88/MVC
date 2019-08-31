@@ -11,6 +11,19 @@
             $this->execController();
         }
 
+        public function getRequisicao(){
+            $obj = new \stdClass;
+
+            foreach ($GET as $key => $value){
+                $obj->get->key = $value;
+            }
+
+            foreach ($POST as $key => $value){
+                $obj->get->key = $value;
+            }
+
+        }
+
         private function setRotas($rotas){
             $r= [];
             foreach($rotas as $rota){
@@ -65,16 +78,16 @@
                 $controller = ControllerUtil::newController($nomeController);
                 switch(count($param)){
                     case 1:
-                        $controller->$nomeMetodoController($arrayParametros[0]);
+                        $controller->$nomeMetodoController($arrayParametros[0], $this->getRequisicao());
                         break;
                     case 2:
-                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1]);
+                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $this->getRequisicao());
                         break;
                     case 3:
-                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $arrayParametros[2]);
+                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $arrayParametros[2], $this->getRequisicao());
                         break;
                     default:
-                        $controller->$nomeMetodoController();
+                        $controller->$nomeMetodoController($this->getRequisicao());
                         break;
                 }
             }
