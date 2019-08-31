@@ -559,6 +559,7 @@ return array(
     'Symfony\\Polyfill\\Ctype\\Ctype' => $vendorDir . '/symfony/polyfill-ctype/Ctype.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'Webmozart\\Assert\\Assert' => $vendorDir . '/webmozart/assert/src/Assert.php',
+    'app\\conexao\\Conexao' => $baseDir . '/app/conexao/Conexao.class.php',
     'app\\controller\\HomeController' => $baseDir . '/app/controller/HomeController.class.php',
     'app\\controller\\ProdutoController' => $baseDir . '/app/controller/ProdutoController.class.php',
     'app\\model\\bo\\ProdutoBO' => $baseDir . '/app/model/bo/ProdutoBO.class.php',

@@ -23,6 +23,9 @@
         public function deletar(Produto $produto){
             return $this->produtoDAO->deletar($produto);
         }
+        public function procurarProdutoPorId(Produto $produto){
+            return $this->produtoDAO->procurarProdutoPorId($produto);
+        }    
         public function listar(){
             return $this->produtoDAO->listar();
         }

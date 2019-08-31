@@ -633,6 +633,7 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'Symfony\\Polyfill\\Ctype\\Ctype' => __DIR__ . '/..' . '/symfony/polyfill-ctype/Ctype.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
+        'app\\conexao\\Conexao' => __DIR__ . '/../..' . '/app/conexao/Conexao.class.php',
         'app\\controller\\HomeController' => __DIR__ . '/../..' . '/app/controller/HomeController.class.php',
         'app\\controller\\ProdutoController' => __DIR__ . '/../..' . '/app/controller/ProdutoController.class.php',
         'app\\model\\bo\\ProdutoBO' => __DIR__ . '/../..' . '/app/model/bo/ProdutoBO.class.php',

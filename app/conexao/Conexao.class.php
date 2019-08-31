@@ -1,6 +1,6 @@
 <?php
 
-    namespace conexao;
+    namespace app\conexao;
 
     use PDO;
 

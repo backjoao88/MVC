@@ -3,7 +3,7 @@
     namespace app\model\dao;
 
     use app\model\dto\Produto;
-    use conexao\Conexao;
+    use app\conexao\Conexao;
     use app\model\interfaces\IPersistenciaProduto;
     use PDO;
 
@@ -85,6 +85,35 @@
                 $pdo = null;
             }
         }
+
+        public function procurarProdutoPorId(Produto $produto){
+            try{
+                $pdo        = Conexao::conectar();
+                $sql        = 'SELECT * FROM ' . self::NOME_TABELA . ' WHERE produto_codigo = :produto_codigo';
+                $stmt      = $pdo->prepare($sql);
+    
+                $stmt->bindParam(':produto_codigo', $produto_codigo, PDO::PARAM_STR);
+                $produto_codigo = $produto->getProdutoCodigo();
+    
+                $stmt->execute();
+    
+                while ($prod = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $produto = new Produto();
+                    $produto->setProdutoCodigo($prod['PRODUTO_CODIGO']);
+                    $produto->setProdutoDescricao($prod['PRODUTO_DESCRICAO']);
+                    $produto->setProdutoImagem($prod['PRODUTO_IMAGEM']);
+                    $produto->setProdutoValor($prod['PRODUTO_VALOR']);
+                }
+    
+           
+               return $produto;
+            }catch (PDOException $e){
+                echo 'Erro ao Listar -> ' . $e->getMessage();
+            }finally{
+                $pdo = null;
+            }
+        }
+    
 
         public function listar(){
             try{
