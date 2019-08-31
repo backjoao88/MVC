@@ -7,7 +7,7 @@
     class HomeController extends AbsController{
 
         public function index(){
-            echo 'home - index';
+            $this->requisitarView('index', 'baseHtml');
         }
         
     }

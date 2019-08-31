@@ -7,11 +7,12 @@
     class ProdutoController extends AbsController{
 
         public function index(){
-            echo 'produtos - index';
+            $this->requisitarView('produtos/index', 'baseHtml');
         }
 
         public function listar($id){
-            echo 'produto - listar - ' . $id;
+            $this->view->id = $id;
+            $this->requisitarView('produtos/listar', 'baseHtml');
         }
         
     }
