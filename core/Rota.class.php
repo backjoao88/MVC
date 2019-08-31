@@ -62,19 +62,19 @@
             $arrayParametros          = $configs[2];
 
             if($encontrado){
-                $controller = Container::newController($controller);
+                $controller = ControllerUtil::newController($nomeController);
                 switch(count($param)){
                     case 1:
-                        $nomeController->$nomeMetodoController($arrayParametros[0]);
+                        $controller->$nomeMetodoController($arrayParametros[0]);
                         break;
                     case 2:
-                        $nomeController->$nomeMetodoController($arrayParametros[0], $arrayParametros[1]);
+                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1]);
                         break;
                     case 3:
-                        $nomeController->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $arrayParametros[2]);
+                        $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $arrayParametros[2]);
                         break;
                     default:
-                        $nomeController->$nomeMetodoController();
+                        $controller->$nomeMetodoController();
                         break;
                 }
             }
