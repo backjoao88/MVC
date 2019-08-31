@@ -123,10 +123,10 @@
                 $produtos = $query->fetchAll(PDO::FETCH_ASSOC);
                 $lista_prod = [];
                 foreach($produtos as $k => $produto){
-                    $prod = (new Produto())->setProdutoCodigo($produto['produto_codigo'])
-                                            ->setProdutoDescricao($produto['produto_descricao'])
-                                            ->setProdutoImagem($produto['produto_imagem'])
-                                            ->setProdutoValor($produto['produto_valor']);
+                    $prod = (new Produto())->setProdutoCodigo($produto['PRODUTO_CODIGO'])
+                                            ->setProdutoDescricao($produto['PRODUTO_DESCRICAO'])
+                                            ->setProdutoImagem($produto['PRODUTO_IMAGEM'])
+                                            ->setProdutoValor($produto['PRODUTO_VALOR']);
                     $lista_prod[] = $prod;
                 } 
                 return $lista_prod;

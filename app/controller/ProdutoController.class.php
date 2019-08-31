@@ -10,6 +10,10 @@
     class ProdutoController extends AbsController{
 
         public function index(){
+            $produtoDAO = new ProdutoDAOMySQL();
+            $produtoBO  = new ProdutoBO($produtoDAO);
+            $produtos    = $produtoBO->listar();
+            $this->view->produtos = $produtos;
             $this->requisitarView('produtos/index', 'baseHtml');
         }
 

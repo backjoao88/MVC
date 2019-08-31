@@ -1,1 +1,14 @@
-<h1> ESSE É O INDEX DO PRODUTO </h1>
+
+<?php foreach ($this->view->produtos as $produto): ?>
+
+<h1> 
+
+    <a href="produto/listar/<?php echo $produto->getProdutoCodigo(); ?>"> 
+
+    <?php echo $produto->getProdutoDescricao(); ?> 
+
+    </a> 
+
+</h1>
+
+<?php endforeach; ?>
