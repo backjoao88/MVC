@@ -1,14 +1,32 @@
 
-<?php foreach ($this->view->produtos as $produto): ?>
 
-<h1> 
+<div id="list" class="row" align="center">
+ 
+ <div class="table col-md-11">
+     <table class="table table-striped" cellspacing="1" cellpadding="1">
+         <thead>
+             <tr>
+                 <th>Código</th>
+                 <th>Descrição</th>
+                 <th>Valor</th>
+                 <th class="actions">Ações</th>
+              </tr>
+         </thead>
+         <tbody>
+         <?php foreach ($this->view->produtos as $produto): ?>
 
-    <a href="produto/listar/<?php echo $produto->getProdutoCodigo(); ?>"> 
+             <tr>
+                 <td><?php echo $produto->getProdutoCodigo(); ?> </td>
+                 <td><?php echo $produto->getProdutoDescricao(); ?> </td>
+                 <td><?php echo $produto->getProdutoValor(); ?> </td>
+                 <td class="actions">
+                     <a style="margin-bottom: 10px" class="btn btn-warning btn-xs" href="/produto/listar/<?php echo $produto->getProdutoCodigo(); ?> "><i title="Editar" class="material-icons" data-toggle="tooltip">&#xE254</i></a>
+                     <a class="btn btn-danger btn-xs"  href="#" ><i title="Deletar" class="material-icons">&#xE872</i></a>
+                 </td>
+             </tr>
+             <?php endforeach; ?>
+         </tbody>
+      </table>
 
-    <?php echo $produto->getProdutoDescricao(); ?> 
-
-    </a> 
-
-</h1>
-
-<?php endforeach; ?>
+  </div>
+</div> <!-- /#list -->
