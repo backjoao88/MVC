@@ -17,7 +17,7 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         ),
         'c' => 
         array (
-            'conexao\\' => 8,
+            'core\\' => 5,
         ),
         'a' => 
         array (
@@ -49,9 +49,9 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'conexao\\' => 
+        'core\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/conexao',
+            0 => __DIR__ . '/../..' . '/core',
         ),
         'app\\' => 
         array (
