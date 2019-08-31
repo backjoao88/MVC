@@ -14,11 +14,11 @@
         public function getRequisicao(){
             $obj = new \stdClass;
 
-            foreach ($GET as $key => $value){
+            foreach ($_GET as $key => $value){
                 $obj->get->key = $value;
             }
 
-            foreach ($POST as $key => $value){
+            foreach ($_POST as $key => $value){
                 $obj->get->key = $value;
             }
 
@@ -59,24 +59,24 @@
                 if($url == $rota[0]){ // se a rota atual for igual a gerada então foi encontrado
                     $controller = $rota[1];
                     $action     = $rota[2];
+
                     return [$controller, $action, $param];
                 }else{
-                    // redirect to page not found
+                    
                 }
             }
         }
   
         private function execController(){
-
+           
             $configs = $this->getControllerEActionDaRota();
-
-            $nomeController           = $configs[0];
-            $nomeMetodoController     = $configs[1];
-            $arrayParametros          = $configs[2];
-
-            if($encontrado){
+            if($configs){
+                $nomeController           = $configs[0];
+                $nomeMetodoController     = $configs[1];
+                $arrayParametros          = $configs[2];
+    
                 $controller = ControllerUtil::newController($nomeController);
-                switch(count($param)){
+                switch(count($arrayParametros)){
                     case 1:
                         $controller->$nomeMetodoController($arrayParametros[0], $this->getRequisicao());
                         break;
@@ -90,7 +90,11 @@
                         $controller->$nomeMetodoController($this->getRequisicao());
                         break;
                 }
+            }else{
+                ControllerUtil::page404();
             }
+
+        
         }
         
     }
