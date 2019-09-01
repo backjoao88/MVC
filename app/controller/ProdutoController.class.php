@@ -72,8 +72,8 @@
                 ->setProdutoValor(isset($request->post->valor) ? $request->post->valor : 0)
                 ->setProdutoImagem(isset($imagem) ? $imagem : "");
             
-            $_POST['sucesso'] = $produtoBO->inserir($produto);;
-            $this->requisitarView('produtos/cadastrar', 'baseHtml');
+            $result = $produtoBO->inserir($produto);
+            Redirecionador::paraARota('cadastrar?sucesso=' . $result);
         }
        
     }
