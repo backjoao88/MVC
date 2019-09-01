@@ -642,6 +642,7 @@ class ComposerStaticInite8ad25085717a341064cec606b7a08c2
         'app\\model\\interfaces\\IPersistenciaProduto' => __DIR__ . '/../..' . '/app/model/interfaces/IPersistenciaProduto.php',
         'core\\AbsController' => __DIR__ . '/../..' . '/core/AbsController.class.php',
         'core\\ControllerUtil' => __DIR__ . '/../..' . '/core/ControllerUtil.class.php',
+        'core\\Redirecionador' => __DIR__ . '/../..' . '/core/Redirecionador.class.php',
         'core\\Rota' => __DIR__ . '/../..' . '/core/Rota.class.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',

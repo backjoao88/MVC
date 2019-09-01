@@ -19,7 +19,7 @@
                  <td><?php echo $produto->getProdutoValor(); ?> </td>
                  <td class="actions">
                      <a style="margin-bottom: 10px" class="btn btn-warning btn-xs" href="/produto/<?php echo $produto->getProdutoCodigo(); ?>/listar"><i title="Editar" class="material-icons" data-toggle="tooltip">&#xE254</i></a>
-                     <a class="btn btn-danger btn-xs"  href="#" ><i title="Deletar" class="material-icons">&#xE872</i></a>
+                     <a class="btn btn-danger btn-xs"  href="/produto/<?php echo $produto->getProdutoCodigo(); ?>/deletar" ><i title="Deletar" class="material-icons">&#xE872</i></a>
                  </td>
              </tr>
              <?php endforeach; ?>

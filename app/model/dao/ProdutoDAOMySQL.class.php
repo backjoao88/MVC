@@ -42,11 +42,11 @@
                 
                 $sql = 'UPDATE ' . self::NOME_TABELA . ' SET produto_descricao = :produto_descricao, 
                 produto_valor = :produto_valor, 
-                produto_imagem = :produto_valor WHERE produto_codigo = :produto_codigo';
+                produto_imagem = :produto_imagem WHERE produto_codigo = :produto_codigo';
 
                 $stmt = $pdo->prepare($sql);
                 
-                $stmt->bindParam(':produto_descricao', $produto_descricao, PDO::PARAM_INT);
+                $stmt->bindParam(':produto_descricao', $produto_descricao, PDO::PARAM_STR);
                 $stmt->bindParam(':produto_valor', $produto_valor,  PDO::PARAM_STR);
                 $stmt->bindParam(':produto_imagem', $produto_imagem, PDO::PARAM_STR);
                 $stmt->bindParam(':produto_codigo', $produto_codigo, PDO::PARAM_STR);

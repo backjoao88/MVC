@@ -7,6 +7,8 @@
     use app\model\bo\ProdutoBO;
     use app\model\dto\Produto;
 
+    use core\Redirecionador;
+
     class ProdutoController extends AbsController{
 
         public function index(){
@@ -32,9 +34,24 @@
         }
 
         public function atualizar($id, $request){
-            echo $request->post->editProdutoDescricao;
-            echo $request->post->editProdutoValor;
+            $produtoDAO = new ProdutoDAOMySQL();
+            $produtoBO  = new ProdutoBO($produtoDAO);
+            $descricao = isset($request->post->editProdutoDescricao) ? $request->post->editProdutoDescricao : "";
+            $valor     = isset($request->post->editProdutoValor) ? $request->post->editProdutoValor : 0;
+            $produto = $produtoBO->procurarProdutoPorId((new Produto())->setProdutoCodigo($id));
+            $produto->setProdutoDescricao($descricao)->setProdutoValor($valor);
+            $produtoBO->alterar($produto);
+            Redirecionador::paraARota('/produtos');
         }
+
+        public function deletar($id) {
+            $produtoDAO = new ProdutoDAOMySQL();
+            $produtoBO  = new ProdutoBO($produtoDAO);
+            $produto = (new Produto())->setProdutoCodigo($id);
+            $produtoBO->deletar($produto);
+            Redirecionador::paraARota('/produtos');
+        }
+
 
         public function cadastrar() {
             $this->requisitarView('produtos/cadastrar', 'baseHtml');
@@ -54,7 +71,7 @@
             
             echo $produtoBO->inserir($produto);
         }
-        
+       
     }
 
 

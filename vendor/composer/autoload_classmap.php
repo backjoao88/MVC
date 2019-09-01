@@ -568,6 +568,7 @@ return array(
     'app\\model\\interfaces\\IPersistenciaProduto' => $baseDir . '/app/model/interfaces/IPersistenciaProduto.php',
     'core\\AbsController' => $baseDir . '/core/AbsController.class.php',
     'core\\ControllerUtil' => $baseDir . '/core/ControllerUtil.class.php',
+    'core\\Redirecionador' => $baseDir . '/core/Redirecionador.class.php',
     'core\\Rota' => $baseDir . '/core/Rota.class.php',
     'phpDocumentor\\Reflection\\DocBlock' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
     'phpDocumentor\\Reflection\\DocBlockFactory' => $vendorDir . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
