@@ -1,0 +1,29 @@
+
+<h2>&nbspCadastro de Produto</h2><br>
+
+<form action="/produto/inserir" method="POST" class="form-horizontal">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="">Descrição:</label>
+            <input type="text" name="descricao" class="form-control" value="" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="">Valor:</label>
+            <input type="number" name="valor" class="form-control" value="" step="0.01" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="">Imagem:</label>
+            <!-- AINDA VOU DAR UMA OLHADA COMO INSERIR IMAGEM -->
+            <input type="text" name="imagem" class="form-control" value="" required>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-sm btn-primary pull-right"><i class='fa fa-plus-circle'></i> Adicionar</button>
+</form>

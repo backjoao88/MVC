@@ -31,6 +31,25 @@
             $this->requisitarView('produtos/listar', 'baseHtml');
 
         }
+
+        public function cadastrar() {
+            $this->requisitarView('produtos/cadastrar', 'baseHtml');
+        }
+
+        public function inserir($request) {
+            echo var_dump($request);
+
+            echo $request->post->descricao;
+
+            $produtoBO  = new ProdutoBO((new ProdutoDAOMySQL()));
+
+            $produto = (new Produto())
+                ->setProdutoDescricao(isset($request->post->descricao) ? $request->post->descricao : "")
+                ->setProdutoValor(isset($request->post->valor) ? $request->post->valor : 0)
+                ->setProdutoImagem(isset($request->post->imagem) ? $request->post->imagem : "");
+            
+            echo $produtoBO->inserir($produto);
+        }
         
     }
 
