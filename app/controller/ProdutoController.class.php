@@ -29,7 +29,11 @@
             $this->view->produto = $produto;
 
             $this->requisitarView('produtos/listar', 'baseHtml');
+        }
 
+        public function atualizar($id, $request){
+            echo $request->post->editProdutoDescricao;
+            echo $request->post->editProdutoValor;
         }
 
         public function cadastrar() {

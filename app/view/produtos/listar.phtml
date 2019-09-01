@@ -1,16 +1,16 @@
 <div id="edit-produto">
-<form id="form-edit-produto">
+<form id="form-edit-produto" action="/produto/<?php echo $this->view->produto->getProdutoCodigo(); ?>/atualizar" method="POST">
   <div id="edit-produto-img">
       <img width=100px src="<?php echo $this->view->produto->getProdutoImagem(); ?>"/> 
   </div>
   <div class="form-group">
     <label for="edit-descricao-produto">Descrição do Produto</label>
-    <input type="text" class="form-control" id="edit-descricao-produto" placeholder="Descrição" value="<?php echo $this->view->produto->getProdutoDescricao(); ?>">
+    <input name="editProdutoDescricao" type="text" class="form-control" id="edit-descricao-produto" placeholder="Descrição" value="<?php echo $this->view->produto->getProdutoDescricao(); ?>">
     <small id="help" class="form-text text-muted">Por favor, informe apenas descrições válidas.</small>
   </div>
   <div class="form-group">
     <label for="edit-valor-produto">Valor</label>
-    <input class="form-control" id="edit-valor-produto" placeholder="Valor" value="<?php echo $this->view->produto->getProdutoValor(); ?>">
+    <input name="editProdutoValor" class="form-control" id="edit-valor-produto" placeholder="Valor" value="<?php echo $this->view->produto->getProdutoValor(); ?>">
   </div>
   <button type="submit" class="btn btn-primary">Salvar</button>
 </form>
