@@ -15,12 +15,14 @@
             $obj = new \stdClass;
 
             foreach ($_GET as $key => $value){
-                $obj->get->key = $value;
+                @$obj->get->$key = $value;
             }
 
             foreach ($_POST as $key => $value){
-                $obj->get->key = $value;
+                @$obj->post->$key = $value;
             }
+            
+            return $obj;
 
         }
 
@@ -76,6 +78,7 @@
                 $arrayParametros          = $configs[2];
     
                 $controller = ControllerUtil::newController($nomeController);
+                
                 switch(count($arrayParametros)){
                     case 1:
                         $controller->$nomeMetodoController($arrayParametros[0], $this->getRequisicao());
@@ -87,6 +90,7 @@
                         $controller->$nomeMetodoController($arrayParametros[0], $arrayParametros[1], $arrayParametros[2], $this->getRequisicao());
                         break;
                     default:
+                        
                         $controller->$nomeMetodoController($this->getRequisicao());
                         break;
                 }
