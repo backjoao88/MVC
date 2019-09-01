@@ -1,7 +1,14 @@
 
+
+<?php
+echo var_dump($_POST);
+
+echo "<p class=\"bg-danger\">TESTE</p>";
+
+?>
 <h2>&nbspCadastro de Produto</h2><br>
 
-<form action="/produto/inserir" method="POST" class="form-horizontal">
+<form action="/produto/inserir" method="POST" class="form-horizontal" enctype="multipart/form-data">
 
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -20,8 +27,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="">Imagem:</label>
-            <!-- AINDA VOU DAR UMA OLHADA COMO INSERIR IMAGEM -->
-            <input type="text" name="imagem" class="form-control" value="" required>
+            <input type="file" name="imagem" accept="image/*" />
         </div>
     </div>
 

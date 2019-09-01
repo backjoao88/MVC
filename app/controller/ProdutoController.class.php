@@ -52,24 +52,28 @@
             Redirecionador::paraARota('/produtos');
         }
 
-
         public function cadastrar() {
             $this->requisitarView('produtos/cadastrar', 'baseHtml');
         }
 
         public function inserir($request) {
             echo var_dump($request);
+            echo var_dump($_FILES);
 
-            echo $request->post->descricao;
+            if($_FILES['imagem']['size'] && getimagesize($_FILES["imagem"]["tmp_name"]) && is_uploaded_file($_FILES['imagem']['tmp_name']))
+            {
+                $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+            }
 
             $produtoBO  = new ProdutoBO((new ProdutoDAOMySQL()));
 
             $produto = (new Produto())
                 ->setProdutoDescricao(isset($request->post->descricao) ? $request->post->descricao : "")
                 ->setProdutoValor(isset($request->post->valor) ? $request->post->valor : 0)
-                ->setProdutoImagem(isset($request->post->imagem) ? $request->post->imagem : "");
+                ->setProdutoImagem(isset($imagem) ? $imagem : "");
             
-            echo $produtoBO->inserir($produto);
+            $_POST['sucesso'] = $produtoBO->inserir($produto);;
+            $this->requisitarView('produtos/cadastrar', 'baseHtml');
         }
        
     }
