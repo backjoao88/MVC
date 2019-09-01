@@ -1,7 +1,13 @@
+
+<?php
+// TESTE VISUALIZAR IMAGEM
+echo '<img src="data:image/png;base64,'.base64_encode($this->view->produto->getProdutoImagem()).'"/>';
+?>
+
 <div id="edit-produto">
 <form id="form-edit-produto" action="/produto/<?php echo $this->view->produto->getProdutoCodigo(); ?>/atualizar" method="POST">
   <div id="edit-produto-img">
-      <img width=100px src="<?php echo $this->view->produto->getProdutoImagem(); ?>"/> 
+      <!-- <img width=100px src="<?php echo $this->view->produto->getProdutoImagem(); ?>"/>  -->
   </div>
   <div class="form-group">
     <label for="edit-descricao-produto">Descrição do Produto</label>

@@ -57,12 +57,8 @@
         }
 
         public function inserir($request) {
-            echo var_dump($request);
-            echo var_dump($_FILES);
-
-            if($_FILES['imagem']['size'] && getimagesize($_FILES["imagem"]["tmp_name"]) && is_uploaded_file($_FILES['imagem']['tmp_name']))
-            {
-                $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
+            if($_FILES['imagem']['size'] && getimagesize($_FILES["imagem"]["tmp_name"]) && is_uploaded_file($_FILES['imagem']['tmp_name'])) {
+                $imagem = addslashes(file_get_contents($_FILES['imagem']['tmp_name']));
             }
 
             $produtoBO  = new ProdutoBO((new ProdutoDAOMySQL()));
