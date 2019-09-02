@@ -34,14 +34,17 @@
         }
 
         public function atualizar($id, $request){
-            $produtoDAO = new ProdutoDAOMySQL();
-            $produtoBO  = new ProdutoBO($produtoDAO);
-            $descricao = isset($request->post->editProdutoDescricao) ? $request->post->editProdutoDescricao : "";
-            $valor     = isset($request->post->editProdutoValor) ? $request->post->editProdutoValor : 0;
-            $produto = $produtoBO->procurarProdutoPorId((new Produto())->setProdutoCodigo($id));
-            $produto->setProdutoDescricao($descricao)->setProdutoValor($valor);
-            $produtoBO->alterar($produto);
-            Redirecionador::paraARota('/produtos');
+            echo var_dump($_POST);
+            echo var_dump($_FILES);
+
+            // $produtoDAO = new ProdutoDAOMySQL();
+            // $produtoBO  = new ProdutoBO($produtoDAO);
+            // $descricao = isset($request->post->editProdutoDescricao) ? $request->post->editProdutoDescricao : "";
+            // $valor     = isset($request->post->editProdutoValor) ? $request->post->editProdutoValor : 0;
+            // $produto = $produtoBO->procurarProdutoPorId((new Produto())->setProdutoCodigo($id));
+            // $produto->setProdutoDescricao($descricao)->setProdutoValor($valor);
+            // $produtoBO->alterar($produto);
+            // Redirecionador::paraARota('/produtos');
         }
 
         public function deletar($id) {

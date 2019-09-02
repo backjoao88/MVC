@@ -1,43 +1,39 @@
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 <div id="edit-produto">
 <form id="form-edit-produto" action="/produto/<?php echo $this->view->produto->getProdutoCodigo(); ?>/atualizar" method="POST">
   <label for="">Imagem:</label>  
   <div id="edit-produto-img">
-    <?= "<img width='362' src='data:image;base64," . $this->view->produto->getProdutoImagem() . "'>"; ?>
+    <?= "<img id='imagem' name='imagem' width='362' src='data:image;base64," . $this->view->produto->getProdutoImagem() . "'>"; ?>
   </div>
 
+  <input type="file" name="imagem" accept="image/*" />
   <div style='margin-bottom:20px;' class="custom-file">
-    <input type="file" class="custom-file-input" id="customFile">
+    <input type="file" name='fileImagem' class="custom-file-input" id="customFile" onchange="readURL(this);">
     <label class="custom-file-label" for="customFile">Selecionar Nova Imagem</label>
   </div>
+
   <script>
     // APRESENTA O NOME DA IMAGEM ON SELECT
     $(".custom-file-input").on("change", function() {
       var fileName = $(this).val().split("\\").pop();
       $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-  </script>
 
-  <input type='file' onchange="readURL(this);" />
-  <img id="blah" src="#" alt="your image" />
+    // APRESENTA A IMAGEM SELECIONADA
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
-  <script>
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        $('#blah')
-          .attr('src', e.target.result)
-          .width(150)
-          .height(200);
-      };
-
-      reader.readAsDataURL(input.files[0]);
+        reader.onload = function (e) {
+          $('#imagem')
+            .attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
-  }
   </script>
-
 
   <div class="form-group">
     <label for="edit-descricao-produto">Descrição do Produto</label>
