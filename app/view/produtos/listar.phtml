@@ -1,14 +1,44 @@
 
-<?php
-// TESTE VISUALIZAR IMAGEM
-echo '<img src="data:image/png;base64,'.base64_encode($this->view->produto->getProdutoImagem()).'"/>';
-?>
-
 <div id="edit-produto">
 <form id="form-edit-produto" action="/produto/<?php echo $this->view->produto->getProdutoCodigo(); ?>/atualizar" method="POST">
+  <label for="">Imagem:</label>  
   <div id="edit-produto-img">
-      <!-- <img width=100px src="<?php echo $this->view->produto->getProdutoImagem(); ?>"/>  -->
+    <?= "<img width='362' src='data:image;base64," . $this->view->produto->getProdutoImagem() . "'>"; ?>
   </div>
+
+  <div style='margin-bottom:20px;' class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile">
+    <label class="custom-file-label" for="customFile">Selecionar Nova Imagem</label>
+  </div>
+  <script>
+    // APRESENTA O NOME DA IMAGEM ON SELECT
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
+
+  <input type='file' onchange="readURL(this);" />
+  <img id="blah" src="#" alt="your image" />
+
+  <script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#blah')
+          .attr('src', e.target.result)
+          .width(150)
+          .height(200);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  </script>
+
+
   <div class="form-group">
     <label for="edit-descricao-produto">Descrição do Produto</label>
     <input name="editProdutoDescricao" type="text" class="form-control" id="edit-descricao-produto" placeholder="Descrição" value="<?php echo $this->view->produto->getProdutoDescricao(); ?>">

@@ -58,7 +58,10 @@
 
         public function inserir($request) {
             if($_FILES['imagem']['size'] && getimagesize($_FILES["imagem"]["tmp_name"]) && is_uploaded_file($_FILES['imagem']['tmp_name'])) {
-                $imagem = addslashes(file_get_contents($_FILES['imagem']['tmp_name']));
+                // $imagem = addslashes(file_get_contents($_FILES['imagem']['tmp_name']));
+                $imagem = addslashes($_FILES['imagem']['tmp_name']);
+                $imagem = file_get_contents($imagem);
+                $imagem = base64_encode($imagem);
             }
 
             $produtoBO  = new ProdutoBO((new ProdutoDAOMySQL()));
