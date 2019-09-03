@@ -1,3 +1,25 @@
+
+
+<?php
+// MENSAGEM DE ALTERADO
+if (isset($_GET['alterado'])) {
+    $status = "danger";
+    $mensagem = "Falha ao alterar registro";
+    if ($_GET['alterado']) {
+        $status = "success";
+        $mensagem = "Registro alterado com sucesso";
+    }
+    ?>
+    <script type="text/javascript">
+        $('#att_Modal').modal('hide')
+    </script>  
+    <div class="alert alert-dismissible alert-<?= $status ?>">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <?= $mensagem ?>
+    </div>
+<?php } ?>
+
+
 <div id="list" class="row" align="center">
  
  <div class="table col-md-11">

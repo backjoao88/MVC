@@ -1,18 +1,19 @@
 
 
 <?php
-
-// MENSAGEM DE SUCESSO
-if (isset($_GET['sucesso'])) {
+// MENSAGEM DE CADASTRADO
+if (isset($_GET['cadastrado'])) {
+    $status = "danger";
     $mensagem = "Falha ao inserir registro";
-    if ($_GET['sucesso']) {
+    if ($_GET['cadastrado']) {
+        $status = "success";
         $mensagem = "Registro inserido com sucesso";
     }
     ?>
     <script type="text/javascript">
         $('#att_Modal').modal('hide')
     </script>  
-    <div class="alert alert-dismissible alert-success">
+    <div class="alert alert-dismissible alert-<?= $status ?>">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <?= $mensagem ?>
     </div>
