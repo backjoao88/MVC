@@ -20,30 +20,48 @@ if (isset($_GET['cadastrado'])) {
 <?php } ?>
 
 
-<h2>&nbspCadastro de Produto</h2><br>
-
-<form action="/produto/inserir" method="POST" class="form-horizontal" enctype="multipart/form-data">
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="">Descrição:</label>
-            <input type="text" name="descricao" class="form-control" value="" required>
+<div id="edit-produto">
+    <form id="form-edit-produto" action="/produto/inserir" method="POST" class="form-horizontal" enctype="multipart/form-data">
+        <label for="">Imagem:</label>  
+        <div id="edit-produto-img">
+            <img id='imagemVisual' name='imagemVisual' width='362' src=''>
         </div>
-    </div>
 
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="">Valor:</label>
-            <input type="number" name="valor" class="form-control" value="" step="0.01" required>
+        <div style='margin-bottom:20px;' class="custom-file">
+            <input type="file" name='imagem' class="custom-file-input" id="customFile" accept="image/*" onchange="readURL(this);">
+            <label class="custom-file-label" for="customFile">Selecionar Nova Imagem</label>
         </div>
-    </div>
 
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="">Imagem:</label>
-            <input type="file" name="imagem" accept="image/*" />
+        <script>
+        // APRESENTA O NOME DA IMAGEM ON SELECT
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        // APRESENTA A IMAGEM SELECIONADA
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                $('#imagemVisual')
+                    .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        </script>
+
+        <div class="form-group">
+            <label for="edit-descricao-produto">Descrição do Produto</label>
+            <input name="descricao" type="text" class="form-control" id="edit-descricao-produto" placeholder="Descrição">
+            <small id="help" class="form-text text-muted">Por favor, informe apenas descrições válidas.</small>
         </div>
-    </div>
-
-    <button type="submit" class="btn btn-sm btn-primary pull-right"><i class='fa fa-plus-circle'></i> Adicionar</button>
-</form>
+        <div class="form-group">
+            <label for="edit-valor-produto">Valor</label>
+            <input name="valor" class="form-control" id="edit-valor-produto" placeholder="Valor">
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+</div>
